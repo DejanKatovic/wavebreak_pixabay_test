@@ -12,7 +12,7 @@ export const DetailSection: React.FC<DetailSectionPropType> = ({ hit }) => {
   return (
     <Grid container sx={{ maxWidth: "1200px", marginX: "auto" }}>
       <Grid item xs={12} md={5} sx={{ marginBottom: "20px" }}>
-        <img src={hit.imageURL} width="100%" alt="Hit" />
+        <img src={hit.imageURL} width="100%" alt="Hit" data-testid="hitImage" />
       </Grid>
       <Grid item xs={0} md={1} />
       <Grid item xs={12} md={6}>
@@ -32,6 +32,7 @@ export const DetailSection: React.FC<DetailSectionPropType> = ({ hit }) => {
             <Typography
               color="secondary"
               sx={{ fontSize: "30px", fontWeight: 600 }}
+              data-testid="userName"
             >
               {hit.user}
             </Typography>

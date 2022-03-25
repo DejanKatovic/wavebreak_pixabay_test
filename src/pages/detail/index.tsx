@@ -15,7 +15,7 @@ export const Detail: React.FC = () => {
   const { data, isLoading, error } = useGetHit(img_id || "");
 
   return (
-    <Box sx={{ padding: "30px" }}>
+    <Box sx={{ padding: "30px" }} data-testid="detailContainer">
       <Link href="/" underline="hover" color="primary">
         Home
       </Link>
