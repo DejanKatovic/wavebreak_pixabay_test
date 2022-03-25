@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Box, Typography, CircularProgress } from "@mui/material";
+import { Box, Typography, CircularProgress, Link } from "@mui/material";
 
+import { DetailSection } from "./components/detailSection";
 import { useGetHit } from "src/query/pixabay";
 
 type DetailParamType = {
@@ -12,10 +13,12 @@ export const Detail: React.FC = () => {
   const { img_id } = useParams<DetailParamType>();
 
   const { data, isLoading, error } = useGetHit(img_id || "");
-  console.log(data);
 
   return (
     <Box sx={{ padding: "30px" }}>
+      <Link href="/" underline="hover" color="primary">
+        Home
+      </Link>
       <Typography
         variant="h1"
         color="primary"
@@ -45,7 +48,9 @@ export const Detail: React.FC = () => {
           The hit is not existed
         </Typography>
       )}
-      {/* {!isLoading && hits.length && <DataViewer data={hits} />}*/}
+      {!isLoading && data?.data.hits.length && (
+        <DetailSection hit={data.data.hits[0]} />
+      )}
     </Box>
   );
 };
